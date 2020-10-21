@@ -1,9 +1,7 @@
-package br.com.xyz.zedelivery.controller;
+package br.com.xyz.zedelivery.pdv;
 
-import br.com.xyz.zedelivery.model.*;
-import br.com.xyz.zedelivery.model.dto.input.*;
-import br.com.xyz.zedelivery.model.dto.output.*;
-import br.com.xyz.zedelivery.repository.PDVRepository;
+import br.com.xyz.zedelivery.pdv.dto.input.*;
+import br.com.xyz.zedelivery.pdv.dto.output.*;
 import br.com.xyz.zedelivery.shared.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.locationtech.jts.geom.Point;

@@ -1,14 +1,13 @@
-package br.com.xyz.zedelivery.model.dto.output;
+package br.com.xyz.zedelivery.pdv.dto.output;
 
-import br.com.xyz.zedelivery.model.PDV;
+import br.com.xyz.zedelivery.pdv.PDV;
 import lombok.*;
-import org.locationtech.jts.geom.*;
 
 import java.util.List;
 
 @AllArgsConstructor
 @Getter
-public class PointOutput {
+class PointOutput {
 
     private final String type;
     private final List<Double> coordinates;

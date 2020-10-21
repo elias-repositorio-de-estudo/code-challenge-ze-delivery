@@ -1,7 +1,7 @@
-package br.com.xyz.zedelivery.model.dto.input;
+package br.com.xyz.zedelivery.pdv.dto.input;
 
 
-import br.com.xyz.zedelivery.model.PDV;
+import br.com.xyz.zedelivery.pdv.PDV;
 import br.com.xyz.zedelivery.shared.utils.JacksonConfig;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

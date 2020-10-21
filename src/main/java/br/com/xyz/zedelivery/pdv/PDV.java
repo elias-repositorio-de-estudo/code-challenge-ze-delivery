@@ -1,4 +1,4 @@
-package br.com.xyz.zedelivery.model;
+package br.com.xyz.zedelivery.pdv;
 
 
 import lombok.*;

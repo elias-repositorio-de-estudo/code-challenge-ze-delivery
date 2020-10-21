@@ -1,11 +1,11 @@
-package br.com.xyz.zedelivery.model.dto.input;
+package br.com.xyz.zedelivery.pdv.dto.input;
 
 import lombok.*;
 
 @AllArgsConstructor
 @Getter
 @NoArgsConstructor
-public class PointInput {
+class PointInput {
     private String type;
     private Float latitude;
     private Float longitude;

@@ -1,6 +1,6 @@
-package br.com.xyz.zedelivery.model.dto.output;
+package br.com.xyz.zedelivery.pdv.dto.output;
 
-import br.com.xyz.zedelivery.model.PDV;
+import br.com.xyz.zedelivery.pdv.PDV;
 import lombok.*;
 
 @AllArgsConstructor

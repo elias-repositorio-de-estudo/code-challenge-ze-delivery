@@ -1,6 +1,6 @@
-package br.com.xyz.zedelivery.model.dto.output;
+package br.com.xyz.zedelivery.pdv.dto.output;
 
-import br.com.xyz.zedelivery.model.*;
+import br.com.xyz.zedelivery.pdv.PDV;
 import lombok.*;
 import org.locationtech.jts.geom.Coordinate;
 
@@ -9,7 +9,7 @@ import java.util.stream.*;
 
 @AllArgsConstructor
 @Getter
-public class CoverageAreaOutput {
+class CoverageAreaOutput {
 
     private final String type;
     private final List<List<Double>> coordinates;

@@ -1,4 +1,4 @@
-package br.com.xyz.zedelivery.model.dto.input;
+package br.com.xyz.zedelivery.pdv.dto.input;
 
 
 import lombok.*;
