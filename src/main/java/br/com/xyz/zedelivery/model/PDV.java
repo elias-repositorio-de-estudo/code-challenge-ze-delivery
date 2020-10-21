@@ -23,7 +23,9 @@ public class PDV {
     @CNPJ
     @Column(unique = true)
     private String document;
+    @Column(columnDefinition = "geometry")
     private MultiPolygon coverageArea;
+    @Column(columnDefinition = "geometry")
     private Point address;
 
     public PDV(String tradingName, String ownerName, String document, MultiPolygon multiPolygon, Point point) {

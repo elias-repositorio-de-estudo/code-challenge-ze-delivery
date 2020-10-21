@@ -1,8 +1,8 @@
 package br.com.xyz.zedelivery.controller;
 
-import br.com.xyz.zedelivery.model.PDV;
-import br.com.xyz.zedelivery.model.dto.input.PDVInput;
-import br.com.xyz.zedelivery.model.dto.output.PdvOutput;
+import br.com.xyz.zedelivery.model.*;
+import br.com.xyz.zedelivery.model.dto.input.*;
+import br.com.xyz.zedelivery.model.dto.output.*;
 import br.com.xyz.zedelivery.repository.PDVRepository;
 import br.com.xyz.zedelivery.shared.exception.NotFoundException;
 import lombok.AllArgsConstructor;
@@ -25,11 +25,12 @@ public class PDVController {
         return ResponseEntity.ok(new PdvOutput(pdv));
     }
 
-    @GetMapping("/point/{point}")
-    public ResponseEntity findByPDVBy(@PathVariable String point){
+    @GetMapping("/point")
+    public ResponseEntity findByPDVBy(@RequestBody PointSearch pointSearch ){
+        Point point = pointSearch.createPoint();
         List<PDV> pdvs = pdvRepository.findByAddress(point);
-        List<PdvOutput> collect = pdvs.stream().map(PdvOutput::new).collect(Collectors.toList());
-        return ResponseEntity.ok(collect);
+        List<PdvOutput> pdvOutputList = pdvs.stream().map(PdvOutput::new).collect(Collectors.toList());
+        return ResponseEntity.ok(pdvOutputList);
     }
 
     @PostMapping("/createPDV")
