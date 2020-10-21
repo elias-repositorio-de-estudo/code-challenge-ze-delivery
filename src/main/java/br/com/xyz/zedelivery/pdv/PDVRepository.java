@@ -12,3 +12,4 @@ interface PDVRepository extends JpaRepository<PDV,Long> {
             "ORDER BY distance(p.address,:point) asc")
     List<PDV> findByAddress(@Param("point") Point point);
 }
+

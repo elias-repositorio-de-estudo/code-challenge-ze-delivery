@@ -19,7 +19,7 @@ class CoverageAreaOutput {
         this.coordinates = Stream.of(pdv.getCoordinates()).map(this::createListCoordinate).collect(Collectors.toList());
     }
 
-    public List<Double> createListCoordinate(Coordinate coordinate){
+    List<Double> createListCoordinate(Coordinate coordinate){
         return List.of(coordinate.getX(),coordinate.getY());
     }
 }

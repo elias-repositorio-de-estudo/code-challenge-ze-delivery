@@ -34,13 +34,13 @@ public class PDVInput {
         }
     }
 
-    private Point createPoint(){
+    Point createPoint(){
         GeometryFactory geometryFactory = new GeometryFactory();
         Coordinate coordinate = new Coordinate(address.getLatitude(), address.getLongitude());
         return geometryFactory.createPoint(coordinate);
     }
 
-    private MultiPolygon createMultipolygon(ObjectMapper mapper) throws JsonProcessingException {
+    MultiPolygon createMultipolygon(ObjectMapper mapper) throws JsonProcessingException {
         String json = mapper.writeValueAsString(coverageArea);
         return mapper.readValue(json, MultiPolygon.class);
     }

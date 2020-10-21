@@ -20,11 +20,11 @@ public class PointSearch {
         return geometryFactory.createPoint(coordinate);
     }
 
-    public Double getLatitude(){
+    Double getLatitude(){
         return coordinates.get(0);
     }
 
-    public Double getLongitude(){
+    Double getLongitude(){
         return coordinates.get(1);
     }
 }
