@@ -6,7 +6,7 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 public class PointInput {
-    private  String type;
-    private  Float latitude;
-    private  Float longitude;
+    private String type;
+    private Float latitude;
+    private Float longitude;
 }

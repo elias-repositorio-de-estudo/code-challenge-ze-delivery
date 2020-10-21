@@ -16,7 +16,15 @@ public class PointSearch {
 
     public Point createPoint(){
         GeometryFactory geometryFactory = new GeometryFactory();
-        Coordinate coordinate = new Coordinate(coordinates.get(0),coordinates.get(1));
+        Coordinate coordinate = new Coordinate(getLatitude(),getLongitude());
         return geometryFactory.createPoint(coordinate);
+    }
+
+    public Double getLatitude(){
+        return coordinates.get(0);
+    }
+
+    public Double getLongitude(){
+        return coordinates.get(1);
     }
 }

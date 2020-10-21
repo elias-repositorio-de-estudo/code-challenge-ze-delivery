@@ -42,8 +42,7 @@ public class PDVInput {
 
     private MultiPolygon createMultipolygon(ObjectMapper mapper) throws JsonProcessingException {
         String json = mapper.writeValueAsString(coverageArea);
-        MultiPolygon multiPolygon = mapper.readValue(json, MultiPolygon.class);
-        return multiPolygon;
+        return mapper.readValue(json, MultiPolygon.class);
     }
 
 }

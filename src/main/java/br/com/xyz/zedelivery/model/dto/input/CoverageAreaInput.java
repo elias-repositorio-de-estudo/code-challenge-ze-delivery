@@ -8,6 +8,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class CoverageAreaInput {
-    private  String type;
-    private  List<List<List<List<Double>>>> coordinates;
+    private String type;
+    private List<List<List<List<Double>>>> coordinates;
 }
