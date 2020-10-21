@@ -5,8 +5,9 @@ import lombok.*;
 import java.util.List;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 public class CoverageAreaInput {
-    private final String type;
-    private final List<List<List<List<Double>>>> coordinates;
+    private  String type;
+    private  List<List<Double>> coordinates;
 }

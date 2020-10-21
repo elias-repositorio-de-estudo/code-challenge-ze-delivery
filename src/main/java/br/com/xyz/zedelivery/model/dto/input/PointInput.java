@@ -4,8 +4,9 @@ import lombok.*;
 
 @AllArgsConstructor
 @Getter
+@NoArgsConstructor
 public class PointInput {
-    private final String type;
-    private final Float latitude;
-    private final Float longitude;
+    private  String type;
+    private  Float latitude;
+    private  Float longitude;
 }
