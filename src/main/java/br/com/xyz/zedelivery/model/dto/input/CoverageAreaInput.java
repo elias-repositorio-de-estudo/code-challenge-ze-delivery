@@ -9,5 +9,5 @@ import java.util.List;
 @Getter
 public class CoverageAreaInput {
     private  String type;
-    private  List<List<Double>> coordinates;
+    private  List<List<List<List<Double>>>> coordinates;
 }
