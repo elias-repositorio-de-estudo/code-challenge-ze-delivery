@@ -46,4 +46,8 @@ public class PDV {
         return address.getGeometryType();
     }
 
+    public Coordinate[] getCoordinates(){
+        return coverageArea.getCoordinates();
+    }
+
 }

@@ -2,6 +2,7 @@ package br.com.xyz.zedelivery.model.dto.output;
 
 import br.com.xyz.zedelivery.model.*;
 import lombok.*;
+import org.locationtech.jts.geom.Coordinate;
 
 import java.util.List;
 import java.util.stream.*;
@@ -11,10 +12,14 @@ import java.util.stream.*;
 public class CoverageAreaOutput {
 
     private final String type;
-    private final List<Coordinates> coordinates;
+    private final List<List<Double>> coordinates;
 
     public CoverageAreaOutput(PDV pdv){
         this.type = pdv.getCoverageArea().getGeometryType();
-        this.coordinates = Stream.of(pdv.getCoverageArea().getCoordinates()).map(Coordinates::new).collect(Collectors.toList());
+        this.coordinates = Stream.of(pdv.getCoordinates()).map(this::createListCoordinate).collect(Collectors.toList());
+    }
+
+    public List<Double> createListCoordinate(Coordinate coordinate){
+        return List.of(coordinate.getX(),coordinate.getY());
     }
 }

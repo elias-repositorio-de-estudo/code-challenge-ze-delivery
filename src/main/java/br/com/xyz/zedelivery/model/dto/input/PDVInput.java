@@ -18,7 +18,7 @@ public class PDVInput {
 
     public PDV toPDV(){
         GeometryFactory geometryFactory = new GeometryFactory();
-        Coordinate coordinate = new Coordinate(address.getLat(), address.getLat());
+        Coordinate coordinate = new Coordinate(address.getLatitude(), address.getLongitude());
         Point point = geometryFactory.createPoint(coordinate);
         ObjectMapper mapper = new ObjectMapper();
 
