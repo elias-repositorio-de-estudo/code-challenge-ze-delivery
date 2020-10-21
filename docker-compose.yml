@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  database:
+    image: mdillon/postgis
+    container_name: bebidinhas
+    ports:
+      - "8085:5432"
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=bebidinhas
