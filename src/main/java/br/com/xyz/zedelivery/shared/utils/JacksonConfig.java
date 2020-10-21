@@ -1,4 +1,4 @@
-package br.com.xyz.zedelivery.shared.exception;
+package br.com.xyz.zedelivery.shared.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -12,7 +12,7 @@ public class JacksonConfig {
 
     @Bean
     @Primary
-    public ObjectMapper objectMapper() {
+    public static ObjectMapper objectMapper() {
         var mapper = new ObjectMapper();
 
         mapper.registerModule(new JtsModule());

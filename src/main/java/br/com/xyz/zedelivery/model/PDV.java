@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.br.CNPJ;
 import org.locationtech.jts.geom.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.util.stream.Stream;
 
@@ -18,7 +19,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class PDV {
     @Id @GeneratedValue(strategy = IDENTITY)
     private Long id;
+    @NotNull
     private String tradingName;
+    @NotNull
     private String ownerName;
     @CNPJ
     @Column(unique = true)
