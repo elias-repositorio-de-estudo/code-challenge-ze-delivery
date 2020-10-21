@@ -7,6 +7,8 @@ import org.locationtech.jts.geom.*;
 
 import javax.persistence.*;
 
+import java.util.stream.Stream;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -43,4 +45,5 @@ public class PDV {
     public String getType(){
         return address.getGeometryType();
     }
+
 }

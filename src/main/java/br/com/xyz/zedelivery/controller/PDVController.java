@@ -2,6 +2,7 @@ package br.com.xyz.zedelivery.controller;
 
 import br.com.xyz.zedelivery.model.PDV;
 import br.com.xyz.zedelivery.model.dto.input.PDVInput;
+import br.com.xyz.zedelivery.model.dto.output.PdvOutput;
 import br.com.xyz.zedelivery.repository.PDVRepository;
 import br.com.xyz.zedelivery.shared.exception.NotFoundException;
 import lombok.AllArgsConstructor;
@@ -11,22 +12,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PDVController {
     private final PDVRepository pdvRepository;
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity findByPDVFor(@PathVariable("id") Long id){
         PDV pdv = pdvRepository.findById(id).orElseThrow(NotFoundException::new);
-        return ResponseEntity.ok(pdv);
+        return ResponseEntity.ok(new PdvOutput(pdv));
     }
 
-    @GetMapping("/{point}")
-    public ResponseEntity findByPDVBy(@RequestBody Point point){
+    @GetMapping("/point/{point}")
+    public ResponseEntity findByPDVBy(@PathVariable String point){
         List<PDV> pdvs = pdvRepository.findByAddress(point);
-        return ResponseEntity.ok(pdvs);
+        List<PdvOutput> collect = pdvs.stream().map(PdvOutput::new).collect(Collectors.toList());
+        return ResponseEntity.ok(collect);
     }
 
     @PostMapping("/createPDV")

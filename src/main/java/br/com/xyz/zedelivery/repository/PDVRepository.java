@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.*;
 
 public interface PDVRepository extends JpaRepository<PDV,Long> {
-    List<PDV> findByAddress(Point point);
+    List<PDV> findByAddress(String point);
 }
