@@ -1,7 +1,7 @@
 package br.com.xyz.zedelivery.model;
 
 
-import lombok.Getter;
+import lombok.*;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.locationtech.jts.geom.*;
 
@@ -11,6 +11,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class PDV {
     @Id @GeneratedValue(strategy = IDENTITY)
     private Long id;
@@ -22,6 +24,13 @@ public class PDV {
     private MultiPolygon coverageArea;
     private Point address;
 
+    public PDV(String tradingName, String ownerName, String document, MultiPolygon multiPolygon, Point point) {
+        this.tradingName = tradingName;
+        this.ownerName = ownerName;
+        this.document = document;
+        this.coverageArea = multiPolygon;
+        this.address = point;
+    }
 
     public Double getLatitude(){
         return address.getX();
