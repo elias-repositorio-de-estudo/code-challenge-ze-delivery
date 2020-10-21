@@ -12,9 +12,9 @@ public class PointOutput {
     private final Double longitude;
 
     public PointOutput(PDV pdv) {
-        this.type = pdv.getAddress().getGeometryType();
-        this.latitude = pdv.getAddress().getY();
-        this.longitude = pdv.getAddress().getX();
+        this.type = pdv.getType();
+        this.latitude = pdv.getLatitude();
+        this.longitude = pdv.getLongitude();
     }
 
 }

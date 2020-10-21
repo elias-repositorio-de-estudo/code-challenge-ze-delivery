@@ -21,4 +21,17 @@ public class PDV {
     private String document;
     private MultiPolygon coverageArea;
     private Point address;
+
+
+    public Double getLatitude(){
+        return address.getX();
+    }
+
+    public Double getLongitude(){
+        return address.getY();
+    }
+
+    public String getType(){
+        return address.getGeometryType();
+    }
 }
