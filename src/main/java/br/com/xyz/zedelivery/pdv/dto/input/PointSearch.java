@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PointSearch {
+public class PointSearch implements IPoint{
 
     private List<Double> coordinates;
 
@@ -20,11 +20,11 @@ public class PointSearch {
         return geometryFactory.createPoint(coordinate);
     }
 
-    Double getLatitude(){
+    public Double getLatitude(){
         return coordinates.get(0);
     }
 
-    Double getLongitude(){
+    public Double getLongitude(){
         return coordinates.get(1);
     }
 }

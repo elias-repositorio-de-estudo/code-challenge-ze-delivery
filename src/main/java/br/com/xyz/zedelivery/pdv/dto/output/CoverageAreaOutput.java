@@ -15,7 +15,7 @@ class CoverageAreaOutput {
     private final List<List<Double>> coordinates;
 
     public CoverageAreaOutput(PDV pdv){
-        this.type = pdv.getCoverageArea().getGeometryType();
+        this.type = pdv.getCoverageAreaType();
         this.coordinates = Stream.of(pdv.getCoordinates()).map(this::createListCoordinate).collect(Collectors.toList());
     }
 

@@ -55,4 +55,7 @@ public class PDV {
         return coverageArea.getCoordinates();
     }
 
+    public String getCoverageAreaType() {
+        return coverageArea.getGeometryType();
+    }
 }
