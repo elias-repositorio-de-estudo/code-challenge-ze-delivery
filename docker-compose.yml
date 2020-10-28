@@ -1,11 +1,24 @@
 version: '3'
 
 services:
-  database:
+  postgres-prod:
+    image: mdillon/postgis
+    container_name: xyz
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./credentials.env.env
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=xyz
+  postgres-test:
     image: mdillon/postgis
     container_name: xyz
     ports:
       - "8085:5432"
+    env_file:
+      - ./credentials_test.env
     environment:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=root
