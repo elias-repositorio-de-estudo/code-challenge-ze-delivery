@@ -8,23 +8,17 @@ import org.locationtech.jts.geom.Point;
 import java.util.List;
 
 @Getter
-@Setter
 @NoArgsConstructor
 public class PointSearch implements IPoint{
 
     private List<Double> coordinates;
+    private String type;
 
-    public Point createPoint(){
-        GeometryFactory geometryFactory = new GeometryFactory();
-        Coordinate coordinate = new Coordinate(getLatitude(),getLongitude());
-        return geometryFactory.createPoint(coordinate);
-    }
-
-    public Double getLatitude(){
+    public double getLatitude(){
         return coordinates.get(0);
     }
 
-    public Double getLongitude(){
+    public double getLongitude(){
         return coordinates.get(1);
     }
 }

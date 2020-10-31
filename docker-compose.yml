@@ -8,10 +8,11 @@ services:
       - "15432:5432"
     env_file:
       - ./credentials.env
+
     environment:
-      - POSTGRES_PASSWORD=${PASS_PROD}
-      - POSTGRES_USER=${USERNAME_PROD}
-      - POSTGRES_DB=${DATABASE_PROD}
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=xyz_prod
   postgres-test:
     image: mdillon/postgis
     container_name: xyz_test
@@ -20,6 +21,6 @@ services:
     env_file:
       - ./credentials_test.env
     environment:
-      - POSTGRES_PASSWORD=${PASS_TEST}
-      - POSTGRES_USER=${USERNAME_TEST}
-      - POSTGRES_DB=${DATABASE_TEST}
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_USER=test
+      - POSTGRES_DB=xyz_test

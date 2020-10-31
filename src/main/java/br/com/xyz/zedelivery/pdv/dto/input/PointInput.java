@@ -7,6 +7,6 @@ import lombok.*;
 @NoArgsConstructor
 class PointInput implements IPoint{
     private String type;
-    private Double latitude;
-    private Double longitude;
+    private double latitude;
+    private double longitude;
 }
