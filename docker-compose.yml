@@ -1,21 +1,44 @@
 version: '3'
 
 services:
-  postgres-prod:
+
+  web:
+    image: xyz
+    networks:
+      - net-backend
+    ports:
+    - "8080:80"
+    depends_on:
+      - db-prod
+      - db-test
+    env_file:
+      - ./credentials.env
+      - ./credentials_test.env
+
+  db-prod:
     image: mdillon/postgis
-    container_name: xyz
     ports:
       - "15432:5432"
+    networks:
+      - net-backend
     environment:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=root
       - POSTGRES_DB=xyz_prod
-  postgres-test:
+
+  db-test:
     image: mdillon/postgis
-    container_name: xyz_test
+    networks:
+      - net-backend
     ports:
       - "8085:5432"
     environment:
       - POSTGRES_PASSWORD=test
       - POSTGRES_USER=test
       - POSTGRES_DB=xyz_test
+
+networks:
+  net-backend:
+volumes:
+  db-prod:
+  db-test:
