@@ -18,7 +18,7 @@ public class FactoryMultiPolygon{
     public Optional<MultiPolygon> createGeometry() {
         try {
             ObjectMapper mapper = new ObjectMapper();
-            String json = mapper.writeValueAsString(coverageArea);
+            String json = mapper.writeValueAsString(coverageArea.getCoordinates());
             return Optional.ofNullable(mapper.readValue(json, MultiPolygon.class));
         } catch (JsonProcessingException e) {
             return Optional.empty();
