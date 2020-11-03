@@ -9,7 +9,7 @@ import java.util.List;
 interface PDVRepository extends JpaRepository<PDV,Long> {
 
     @Query("SELECT p FROM PDV p WHERE CONTAINS (p.coverageArea, :point) = TRUE " +
-            "ORDER BY distance(p.address,:point) asc")
+            "ORDER BY distance(p.address, :point) asc")
     List<PDV> findByAddress(@Param("point") Point point);
 }
 

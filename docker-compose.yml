@@ -6,9 +6,6 @@ services:
     container_name: xyz
     ports:
       - "15432:5432"
-    env_file:
-      - ./credentials.env
-
     environment:
       - POSTGRES_PASSWORD=root
       - POSTGRES_USER=root
@@ -18,8 +15,6 @@ services:
     container_name: xyz_test
     ports:
       - "8085:5432"
-    env_file:
-      - ./credentials_test.env
     environment:
       - POSTGRES_PASSWORD=test
       - POSTGRES_USER=test
