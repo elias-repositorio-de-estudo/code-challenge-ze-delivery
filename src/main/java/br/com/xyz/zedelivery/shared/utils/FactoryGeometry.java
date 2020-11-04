@@ -30,6 +30,10 @@ public class FactoryGeometry {
     //POREM ACHO QUE FAZENDO COM O OBJECT MAPPER FICA MAIS SIMPLES
     public Optional<MultiPolygon> createMultipolygon(ICoverageArea coverageArea) {
         try {
+
+//            ObjectMapper mapper = new ObjectMapper();	            ObjectMapper mapper = new ObjectMapper();
+//            String json = mapper.writeValueAsString(coverageArea);	            String json = mapper.writeValueAsString(coverageArea.getCoordinates());
+//            return Optional.ofNullable(mapper.readValue(json, MultiPolygon.class));
             String coordinates = coverageArea.getCoordinates()
                     .stream()
                     .map(op -> op.toString())
