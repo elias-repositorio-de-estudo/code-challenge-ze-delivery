@@ -26,6 +26,8 @@ public class FactoryGeometry {
         return Optional.empty();
     }
 
+    //REVISAR COM O AQUILES
+    //POREM ACHO QUE FAZENDO COM O OBJECT MAPPER FICA MAIS SIMPLES
     public Optional<MultiPolygon> createMultipolygon(ICoverageArea coverageArea) {
         try {
             String coordinates = coverageArea.getCoordinates()
