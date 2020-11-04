@@ -10,6 +10,9 @@ services:
     depends_on:
       - db-prod
       - db-test
+    env_file:
+      - credentials.env
+      - credentials_test.env
   db-prod:
     image: mdillon/postgis
     ports:
