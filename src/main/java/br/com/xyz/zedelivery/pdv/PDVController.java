@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PDVController {
     private final PDVRepository pdvRepository;
+    private final FactoryGeometry factoryGeometry;
 
     @GetMapping("/searchBy/{id}")
     public ResponseEntity<OutputPDV> findByPDVFor(@PathVariable("id") Long id){
@@ -28,7 +29,7 @@ public class PDVController {
 
     @GetMapping("/searchBy/point")
     public ResponseEntity<List<OutputPDV>> findByPDVBy(@RequestBody SearchPoint searchPoint){
-        Optional<Point> possiblePoint = new FactoryPoint(searchPoint).createGeometry();
+        Optional<Point> possiblePoint = factoryGeometry.createPoint(searchPoint);
         if(possiblePoint.isPresent()){
             Point point = possiblePoint.get();
             List<PDV> pdvs = pdvRepository.findByAddress(point);
@@ -39,14 +40,13 @@ public class PDVController {
     }
 
     @PostMapping("/createPDV")
-    public ResponseEntity create(@RequestBody @Valid PDVInput pdvInput) throws JsonProcessingException {
-        Optional<Point> point = new FactoryPoint(pdvInput.getAddress()).createGeometry();
-        Optional<MultiPolygon> multiPolygon = new FactoryMultiPolygon(pdvInput.getCoverageArea()).createGeometry();
+    public ResponseEntity create(@RequestBody @Valid PDVInput pdvInput) {
+        Optional<Point> point = factoryGeometry.createPoint(pdvInput.getAddress());
+        Optional<MultiPolygon> multiPolygon = factoryGeometry.createMultipolygon(pdvInput.getCoverageArea());
 
         if(point.isPresent() && multiPolygon.isPresent()){
-            PDV pdv = pdvInput.toPDV(point.get(),multiPolygon.get());
-            pdvRepository.save(pdv);
-            return ResponseEntity.ok(pdv);
+            PDV pdv = pdvRepository.save(pdvInput.toPDV(point.get(), multiPolygon.get()));
+            return ResponseEntity.ok(new OutputPDV(pdv));
         }
         return ResponseEntity.badRequest().build();
     }
