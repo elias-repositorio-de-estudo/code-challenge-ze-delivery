@@ -12,17 +12,18 @@ import static org.mockito.Mockito.*;
 
 class FactoryGeometryTest {
 
-    @Autowired
+
+    private FactoryGeometry geometry;
     private GeometryFactory geometryFactory;
-    private FactoryGeometry factoryGeometry;
     private IPoint iPoint;
     private ICoverageArea iCoverageArea;
 
     @BeforeEach
     public void setup(){
-        factoryGeometry = spy(new FactoryGeometry(geometryFactory));
         iPoint = mock(IPoint.class);
         iCoverageArea = mock(ICoverageArea.class);
+        geometryFactory = new GeometryFactory();
+        geometry = new FactoryGeometry(geometryFactory);
     }
 
     @Test
@@ -30,7 +31,7 @@ class FactoryGeometryTest {
         when(iPoint.getLatitude()).thenReturn(-46.57421);
         when(iPoint.getLongitude()).thenReturn(-21.785741);
         when(iPoint.getType()).thenReturn("Point");
-        Optional<Point> optionalPoint = factoryGeometry.createPoint(iPoint);
+        Optional<Point> optionalPoint = geometry.createPoint(iPoint);
         Point point = optionalPoint.get();
         assertEquals(iPoint.getLatitude(),point.getX());
         assertEquals(iPoint.getLongitude(),point.getY());
@@ -40,7 +41,7 @@ class FactoryGeometryTest {
 
     @Test
     public void should_return_a_point_default(){
-        Optional<Point> optionalPoint = factoryGeometry.createPoint(iPoint);
+        Optional<Point> optionalPoint = geometry.createPoint(iPoint);
         Point point = optionalPoint.get();
         assertEquals(point.getX(),0);
         assertEquals(point.getY(),0);
