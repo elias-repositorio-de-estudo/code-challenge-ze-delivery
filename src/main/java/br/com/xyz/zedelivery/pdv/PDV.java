@@ -8,15 +8,12 @@ import org.locationtech.jts.geom.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import java.util.stream.Stream;
-
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class PDV {
     @Id @GeneratedValue(strategy = IDENTITY)
     private Long id;

@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @RestController
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PDVController {
+
     private final PDVRepository pdvRepository;
     private final FactoryGeometry factoryGeometry;
 
@@ -40,7 +41,7 @@ public class PDVController {
     }
 
     @PostMapping("/createPDV")
-    public ResponseEntity create(@RequestBody @Valid PDVInput pdvInput) {
+    public ResponseEntity<OutputPDV> create(@RequestBody @Valid PDVInput pdvInput) {
         Optional<Point> point = factoryGeometry.createPoint(pdvInput.getAddress());
         Optional<MultiPolygon> multiPolygon = factoryGeometry.createMultipolygon(pdvInput.getCoverageArea());
 

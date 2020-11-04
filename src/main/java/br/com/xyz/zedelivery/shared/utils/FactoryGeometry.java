@@ -31,8 +31,8 @@ public class FactoryGeometry {
     public Optional<MultiPolygon> createMultipolygon(ICoverageArea coverageArea) {
         try {
 
-//            ObjectMapper mapper = new ObjectMapper();	            ObjectMapper mapper = new ObjectMapper();
-//            String json = mapper.writeValueAsString(coverageArea);	            String json = mapper.writeValueAsString(coverageArea.getCoordinates());
+
+//            String json = mapper.writeValueAsString(coverageArea);
 //            return Optional.ofNullable(mapper.readValue(json, MultiPolygon.class));
             String coordinates = coverageArea.getCoordinates()
                     .stream()
