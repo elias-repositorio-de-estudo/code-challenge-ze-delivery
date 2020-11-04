@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-public class PointSearch implements IPoint{
+public class SearchPoint implements IPoint{
 
     private List<Double> coordinates;
     private String type;

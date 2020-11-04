@@ -17,8 +17,8 @@ public class PDVInput {
     private String ownerName;
     @NotNull
     private String document;
-    private PointInput address;
-    private CoverageAreaInput coverageArea;
+    private InputPoint address;
+    private InputCoverageArea coverageArea;
 
     public PDV toPDV(Point point, MultiPolygon multiPolygon){
         return new PDV(tradingName,ownerName,document,multiPolygon,point);

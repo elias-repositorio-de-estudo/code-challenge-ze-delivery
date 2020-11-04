@@ -5,19 +5,19 @@ import lombok.*;
 
 @AllArgsConstructor
 @Getter
-public class PdvOutput {
+public class OutputPDV {
 
     private final String tradingName;
     private final String ownerName;
     private final String document;
-    private final CoverageAreaOutput coverageArea;
-    private final PointOutput address;
+    private final OutputCoverageArea coverageArea;
+    private final OutputPoint address;
 
-    public PdvOutput(PDV pdv){
+    public OutputPDV(PDV pdv){
         this.tradingName = pdv.getTradingName();
         this.ownerName = pdv.getOwnerName();
         this.document = pdv.getDocument();
-        this.coverageArea = new CoverageAreaOutput(pdv);
-        this.address = new PointOutput(pdv);
+        this.coverageArea = new OutputCoverageArea(pdv);
+        this.address = new OutputPoint(pdv);
     }
 }

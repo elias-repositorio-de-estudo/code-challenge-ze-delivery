@@ -9,12 +9,12 @@ import java.util.stream.*;
 
 @AllArgsConstructor
 @Getter
-class CoverageAreaOutput {
+class OutputCoverageArea {
 
     private final String type;
     private final List<List<Double>> coordinates;
 
-    public CoverageAreaOutput(PDV pdv){
+    public OutputCoverageArea(PDV pdv){
         this.type = pdv.getCoverageAreaType();
         this.coordinates = Stream.of(pdv.getCoordinates()).map(this::createListCoordinate).collect(Collectors.toList());
     }

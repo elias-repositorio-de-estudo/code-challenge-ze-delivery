@@ -21,19 +21,19 @@ public class PDVController {
     private final PDVRepository pdvRepository;
 
     @GetMapping("/searchBy/{id}")
-    public ResponseEntity<PdvOutput> findByPDVFor(@PathVariable("id") Long id){
+    public ResponseEntity<OutputPDV> findByPDVFor(@PathVariable("id") Long id){
         PDV pdv = pdvRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        return ResponseEntity.ok(new PdvOutput(pdv));
+        return ResponseEntity.ok(new OutputPDV(pdv));
     }
 
     @GetMapping("/searchBy/point")
-    public ResponseEntity<List<PdvOutput>> findByPDVBy(@RequestBody PointSearch pointSearch ){
-        Optional<Point> possiblePoint = new FactoryPoint(pointSearch).createGeometry();
+    public ResponseEntity<List<OutputPDV>> findByPDVBy(@RequestBody SearchPoint searchPoint){
+        Optional<Point> possiblePoint = new FactoryPoint(searchPoint).createGeometry();
         if(possiblePoint.isPresent()){
             Point point = possiblePoint.get();
             List<PDV> pdvs = pdvRepository.findByAddress(point);
-            List<PdvOutput> pdvOutputList = pdvs.stream().map(PdvOutput::new).collect(Collectors.toList());
-            return ResponseEntity.ok(pdvOutputList);
+            List<OutputPDV> outputPDVList = pdvs.stream().map(OutputPDV::new).collect(Collectors.toList());
+            return ResponseEntity.ok(outputPDVList);
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }

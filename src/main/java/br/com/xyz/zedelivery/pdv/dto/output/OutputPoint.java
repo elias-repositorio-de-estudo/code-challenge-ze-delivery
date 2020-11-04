@@ -7,12 +7,12 @@ import java.util.List;
 
 @AllArgsConstructor
 @Getter
-class PointOutput {
+class OutputPoint {
 
     private final String type;
     private final List<Double> coordinates;
 
-    public PointOutput(PDV pdv) {
+    public OutputPoint(PDV pdv) {
         this.type = pdv.getType();
         this.coordinates = List.of(pdv.getLatitude(), pdv.getLongitude());
     }

@@ -7,7 +7,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-class CoverageAreaInput implements ICoverageArea{
+class InputCoverageArea implements ICoverageArea{
     private String type;
     private List<List<List<List<Double>>>> coordinates;
 }
