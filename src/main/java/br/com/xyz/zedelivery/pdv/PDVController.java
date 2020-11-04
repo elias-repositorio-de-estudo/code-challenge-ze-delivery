@@ -13,7 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.util.*;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 @RestController
 @AllArgsConstructor(onConstructor = @__(@Autowired))
@@ -41,13 +41,13 @@ public class PDVController {
     @PostMapping("/createPDV")
     public ResponseEntity create(@RequestBody @Valid PDVInput pdvInput) throws JsonProcessingException {
         Optional<Point> point = new FactoryPoint(pdvInput.getAddress()).createGeometry();
-        Optional<MultiPolygon> multiPolygon = new MultiPolygonFactory(pdvInput.getCoverageArea()).createGeometry();
+        Optional<MultiPolygon> multiPolygon = new FactoryMultiPolygon(pdvInput.getCoverageArea()).createGeometry();
+
         if(point.isPresent() && multiPolygon.isPresent()){
             PDV pdv = pdvInput.toPDV(point.get(),multiPolygon.get());
             pdvRepository.save(pdv);
             return ResponseEntity.ok(pdv);
         }
         return ResponseEntity.badRequest().build();
-
     }
 }

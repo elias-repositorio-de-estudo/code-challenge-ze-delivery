@@ -7,11 +7,11 @@ import org.locationtech.jts.geom.*;
 
 import java.util.Optional;
 
-public class MultiPolygonFactory {
+public class FactoryMultiPolygon{
 
     private final ICoverageArea coverageArea;
 
-    public MultiPolygonFactory(ICoverageArea coverageArea) {
+    public FactoryMultiPolygon(ICoverageArea coverageArea) {
         this.coverageArea = coverageArea;
     }
 

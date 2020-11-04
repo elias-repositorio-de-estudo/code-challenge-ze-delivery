@@ -12,13 +12,13 @@ import static org.mockito.Mockito.*;
 
 class FactoryMultiPolygonTest {
 
-    private MultiPolygonFactory factoryMultiPolygon;
+    private FactoryMultiPolygon factoryMultiPolygon;
     private ICoverageArea iCoverageArea;
 
     @BeforeEach
     public void setup(){
         iCoverageArea = mock(ICoverageArea.class);
-        factoryMultiPolygon = spy(new MultiPolygonFactory(iCoverageArea));
+        factoryMultiPolygon = spy(new FactoryMultiPolygon(iCoverageArea));
     }
 
     @Test
