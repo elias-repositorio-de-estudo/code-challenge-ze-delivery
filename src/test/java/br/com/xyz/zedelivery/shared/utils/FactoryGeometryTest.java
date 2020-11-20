@@ -3,7 +3,6 @@ package br.com.xyz.zedelivery.shared.utils;
 import br.com.xyz.zedelivery.pdv.dto.input.*;
 import org.junit.jupiter.api.*;
 import org.locationtech.jts.geom.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Optional;
 
@@ -23,7 +22,7 @@ class FactoryGeometryTest {
         iPoint = mock(IPoint.class);
         iCoverageArea = mock(ICoverageArea.class);
         geometryFactory = new GeometryFactory();
-        geometry = new FactoryGeometry(geometryFactory);
+        geometry = new FactoryGeometry(geometryFactory, objectMapper);
     }
 
     @Test

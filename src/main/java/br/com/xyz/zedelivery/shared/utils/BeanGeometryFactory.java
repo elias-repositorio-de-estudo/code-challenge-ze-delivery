@@ -4,7 +4,7 @@ import org.locationtech.jts.geom.GeometryFactory;
 import org.springframework.context.annotation.*;
 
 @Configuration
-public class GeometryFactoryBean {
+public class BeanGeometryFactory {
     @Bean
     public GeometryFactory createGeometryFactoryBean(){
         return new GeometryFactory();

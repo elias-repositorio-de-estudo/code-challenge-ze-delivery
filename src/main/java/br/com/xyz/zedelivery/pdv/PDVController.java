@@ -30,7 +30,7 @@ public class PDVController {
 
     @GetMapping("/searchBy/point")
     public ResponseEntity<List<OutputPDV>> findByPDVBy(@RequestBody SearchPoint searchPoint){
-        Optional<Point> possiblePoint = factoryGeometry.createPoint(searchPoint);
+        Optional<Point> possiblePoint = factoryGeometry.createPoint(searchPoint.getLatitude(),searchPoint.getLongitude());
         if(possiblePoint.isPresent()){
             Point point = possiblePoint.get();
             List<PDV> pdvs = pdvRepository.findByAddress(point);
@@ -42,8 +42,10 @@ public class PDVController {
 
     @PostMapping("/createPDV")
     public ResponseEntity<OutputPDV> create(@RequestBody @Valid PDVInput pdvInput) {
-        Optional<Point> point = factoryGeometry.createPoint(pdvInput.getAddress());
-        Optional<MultiPolygon> multiPolygon = factoryGeometry.createMultipolygon(pdvInput.getCoverageArea());
+        IPoint address = pdvInput.getAddress();
+        ICoverageArea coverageArea = pdvInput.getCoverageArea();
+        Optional<Point> point = factoryGeometry.createPoint(address.getLatitude(),address.getLongitude());
+        Optional<MultiPolygon> multiPolygon = factoryGeometry.createMultipolygon(coverageArea.getCoordinates());
 
         if(point.isPresent() && multiPolygon.isPresent()){
             PDV pdv = pdvRepository.save(pdvInput.toPDV(point.get(), multiPolygon.get()));
